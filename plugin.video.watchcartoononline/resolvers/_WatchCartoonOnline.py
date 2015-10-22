@@ -61,7 +61,7 @@ def DoResolve(url):
         html  = theNet.http_POST(url, data).content.replace('\n', '').replace('\t', '')
 
         try:
-            match = re.compile('file: "(.+)",.+?image').search(html).group(1)             
+            match = re.compile('file: "([^"]+)"').search(html).group(1)             
         except Exception, e:
             match = re.compile('file=(.+?)&provider=http').search(html).group(1).split('file=', 1)[-1]
 
